@@ -33,12 +33,44 @@
 
 @media screen and (min-width: 40rem)
 {
-	:root { --lgap: calc(2 * var(--hgap)) }
+	:root {
+		--lgap: calc(2 * var(--hgap));
+		--h2size: 2.25em;
+	}
 }
 
 @media screen and (min-width: 50rem)
 {
 	:root { --lgap: calc(2.5 * var(--hgap)) }
+}
+
+@media screen and (min-width: 75rem)
+{
+	:root {
+		--lgap: calc(3 * var(--hgap));
+		--kgap: calc(3 * var(--vgap));
+		--h2size: 2.5em;
+		--h3size: 2em;
+		--capsize: 1.375em;
+		--textsize: 1.25em;
+	}
+}
+
+@media screen and (min-width: 100rem)
+{
+	:root { --lgap: calc(4 * var(--hgap)) }
+}
+
+@media screen and (min-width: 100rem)
+{
+	:root {
+		--lgap: calc(6 * var(--hgap));
+		--kgap: calc(4 * var(--vgap));
+		--h2size: 2.75em;
+		--h3size: 2.25em;
+		--capsize: 1.5em;
+		--textsize: 1.5em;
+	}
 }
 
 * {
@@ -194,7 +226,6 @@ nav rect {
 }
 
 nav ul {
-	position: absolute;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -235,6 +266,11 @@ nav a:hover {
 #menu_toggle:checked~label rect:nth-child(4) { transform: scaleX(0) }
 #menu_toggle:checked~label rect:nth-child(2) { transform: rotate(45deg) }
 #menu_toggle:checked~label rect:nth-child(3) { transform: rotate(-45deg) }
+
+@media screen and (min-width: 75rem)
+{
+	nav ul { padding: var(--kgap) var(--lgap) }
+}
 
 /* Sections */
 
@@ -354,10 +390,35 @@ section ul { list-style: none }
 	padding-bottom: calc(8 * var(--vgap));
 }
 
+@media screen and (min-width: 40rem)
+{
+	#hero h2 { width: calc(50% - var(--lgap) / 2) }
+}
+
+@media screen and (min-width: 60rem)
+{
+	#hero { padding-bottom: calc(12 * var(--vgap)) }
+}
+
 /* Main */
 
 main p { font-stretch: 99% }
 main p+p { margin-top: 1em }
+
+@media screen and (min-width: 60rem)
+{
+	main {
+		column-count: 2;
+		column-gap: var(--lgap);
+	}
+
+	main h3 {
+		margin-bottom: calc(2 * var(--vgap));
+		column-span: all;
+	}
+
+	main p+p { margin-top: 0 }
+}
 
 /* Vorteile */
 
@@ -391,6 +452,16 @@ main p+p { margin-top: 1em }
 	}
 
 	#vorteile li:nth-of-type(2) { border-top: 0 }
+}
+
+@media screen and (min-width: 75rem)
+{
+	#vorteile li::before {
+		position: relative;
+		top: -.125em;
+		vertical-align: middle;
+		line-height: .5;
+	}
 }
 
 /* Lebensregeln */
@@ -571,6 +642,75 @@ main p+p { margin-top: 1em }
 	}
 }
 
+@media screen and (min-width: 60rem)
+{
+	#eingeweiht h3,
+	#eingeweiht h4 { text-align: center }
+
+	#eingeweiht ul {
+		grid-template-columns: repeat(2, 1fr);
+		align-items: start;
+		gap: calc(3 * var(--vgap)) var(--lgap);
+		margin-left: 0;
+	}
+	
+	#eingeweiht ul::before {
+		left: 0;
+		right: 0;
+	}
+	
+	#eingeweiht h5::before,
+	#eingeweiht h5::after { display: none }
+
+	#eingeweiht li { position: relative }
+	#eingeweiht li:nth-of-type(odd) { grid-column: 1/2 }
+	#eingeweiht li:nth-of-type(even) { grid-column: 2/3 }
+	#eingeweiht li:nth-of-type(1) { grid-row: 1/2 }
+	#eingeweiht li:nth-of-type(2) { grid-row: 1/3 }
+	#eingeweiht li:nth-of-type(3) { grid-row: 2/5 }
+	#eingeweiht li:nth-of-type(4) { grid-row: 3/5 }
+	
+	#eingeweiht li::before,
+	#eingeweiht li::after {
+		position: absolute;
+		display: block;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		content: '';
+		background-color: var(--green-2);
+	}
+
+	#eingeweiht li::before {
+		width: calc(var(--lgap) / 2);
+		height: 1px;
+	}
+	
+	#eingeweiht li:nth-of-type(odd)::before { right: calc(0px - var(--lgap) / 2) }
+	#eingeweiht li:nth-of-type(even)::before { left: calc(0px - var(--lgap) / 2) }
+
+	#eingeweiht li::after {
+		width: calc(var(--gap) / 2);
+		height: calc(var(--gap) / 2);
+		border-radius: calc(var(--gap) / 4);
+	}
+	
+	#eingeweiht li:nth-of-type(odd)::after { right: calc(0px - var(--lgap) / 2 - var(--gap) / 4) }
+	#eingeweiht li:nth-of-type(even)::after { left: calc(0px - var(--lgap) / 2 - var(--gap) / 4) }
+}
+
+@media screen and (min-width: 100rem)
+{
+	#eingeweiht li::after {
+		width: var(--gap);
+		height: var(--gap);
+		border-radius: calc(var(--gap) / 2);
+	}
+	
+	#eingeweiht li:nth-of-type(odd)::after { right: calc(0px - var(--lgap) / 2 - var(--gap) / 2) }
+	#eingeweiht li:nth-of-type(even)::after { left: calc(0px - var(--lgap) / 2 - var(--gap) / 2) }
+}
+
 /* Kontakt */
 
 #kontakt { text-align: center }
@@ -580,6 +720,16 @@ main p+p { margin-top: 1em }
 	#kontakt {
 		padding-left: calc(3 * var(--lgap));
 		padding-right: calc(3 * var(--lgap));
+	}
+}
+
+@media screen and (min-width: 60rem)
+{
+	#kontakt {
+		margin: auto;
+		padding-left: 0;
+		padding-right: 0;
+		width: calc(50% - var(--lgap) / 2);
 	}
 }
 

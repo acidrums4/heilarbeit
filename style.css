@@ -352,7 +352,7 @@ section ul { list-style: none }
 .darkgreenbg { background-color: var(--green-2) }
 .lightgreenbg { background-color: var(--green-1) }
 
-.whitebg a {
+.whitebg [role="button"] {
 	background-color: var(--green-2);
 	font-size: var(--textsize);
 	font-variant-caps: normal;
@@ -360,7 +360,7 @@ section ul { list-style: none }
 	color: var(--green-4);
 }
 
-.whitebg a:hover {
+.whitebg [role="button"]:hover {
 	background-color: var(--green-4);
 	color: var(--green-0);
 }
@@ -373,12 +373,12 @@ section ul { list-style: none }
 	background-attachment: fixed;
 }
 
-.photobg a {
+.photobg [role="button"] {
 	background-color: var(--green-0);
 	color: var(--green-4);
 }
 
-.photobg a:hover {
+.photobg [role="button"]:hover {
 	background-color: var(--green-4);
 	color: var(--green-0);
 }
@@ -735,52 +735,83 @@ main p+p { margin-top: 1em }
 
 /* Legal */
 
-.textlegal h5 {
-	margin-top: 1em;
+.legal h2 { text-align: center }
+
+.legal h4,
+.legal h5 {
+	margin-top: 2em;
 	margin-bottom: 1em;
 }
 
-.textlegal li>h5 {
+.legal h4 {
+	line-height: 1.25;
+	font-weight: 700;
+	font-size: var(--h3size);
+}
+
+.legal li>h5 {
 	display: inline;
 	margin-left: .5em;
 }
 
-.textlegal ul,
-.textlegal dt,
-.textlegal ol+p,
-.textlegal dl+p { margin-top: 1em }
+.legal ul,
+.legal dt,
+.legal p+p,
+.legal ol+p,
+.legal dl+p { margin-top: 1em }
 
-.textlegal ul { list-style: disc inside none }
-.textlegal ol { list-style: lower-alpha inside none }
+.legal ul { list-style: disc inside none }
+.legal ol { list-style: lower-alpha inside none }
 
-.textlegal ul li,
-.textlegal ol ol li {
-	line-height: 1.5;
+.legal ul li,
+.legal ol ol li {
+	line-height: 1.75;
 	font-size: var(--textsize);
 	font-weight: 300;
 	color: var(--color-t);
 }
 
-.textlegal ol li { margin-top: 1em }
-.textlegal ol ol { margin-left: var(--hgap) }
+.legal ol li { margin-top: 1em }
+.legal ol ol { margin-left: var(--hgap) }
 
-.textlegal ol li::marker,
-.textlegal ul li::marker { color: var(--color-t) }
+.legal ol li::marker,
+.legal ul li::marker { color: var(--color-t) }
 
-.textlegal ol li::marker {
+.legal ol li::marker {
 	display: inline;
 	float: left;
 	font-weight: 600;
 }
 
-.textlegal>ol>li>p { margin-top: 1em }
+.legal>ol>li>p { margin-top: 1em }
 
-.textlegal dt,
-.textlegal>ol>li::marker { font-size: var(--textsize) }
+.legal dt,
+.legal>ol>li::marker { font-size: var(--textsize) }
 
-.textlegal dt { color: var(--color-t) }
+.legal dt { color: var(--color-t) }
 
-.textlegal a { color: var(--accnt-1) }
+.legal a { color: var(--accnt-1) }
+
+@media screen and (min-width: 60rem)
+{
+	.legal { column-count: 1 }
+
+	.legal>* {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 40rem;
+	}
+}
+
+@media screen and (min-width: 75rem)
+{
+	.legal>* { max-width: 50rem }
+}
+
+@media screen and (min-width: 100rem)
+{
+	.legal>* { max-width: 70rem }
+}
 
 /* Footer */
 

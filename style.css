@@ -73,11 +73,34 @@
 	}
 }
 
+@media (prefers-color-scheme: dark)
+{
+	:root {
+		--green-0: #2b473f;
+		--green-0-rgb: 43, 71, 63;
+
+		--green-1: #3b574f;
+		--green-1-rgb: 59, 87, 79;
+
+		--green-2: #b8d28f;
+		--green-2-rgb: 184, 210, 143;
+
+		--green-3: #edfbe7;
+		--green-3-rgb: 237, 251, 231;
+
+		--green-4: #fcfffc;
+		--green-4-rgb: 252, 255, 252;
+
+		--color-t: #3d3d3d;
+		--color-t-rgb: 61, 61, 61;
+	}
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	outline-color: var(--accnt-1);
+	outline-color: var(--green-4);
 }
 
 html {
@@ -179,6 +202,11 @@ header::after {
 
 #header-logo svg { max-height: calc(5 * var(--vgap)) }
 
+@media (prefers-color-scheme: dark)
+{
+	#header-logo svg { filter: brightness(20) grayscale(1) }
+}
+
 /* Navigation */
 
 nav {
@@ -218,7 +246,7 @@ nav svg {
 	transition: color var(--transtime) linear;
 }
 
-nav svg:hover { color: var(--accnt-1) }
+nav svg:hover { color: var(--green-4) }
 
 nav rect {
 	transition: transform var(--transtime) var(--easing);
@@ -270,6 +298,13 @@ nav a:hover {
 @media screen and (min-width: 75rem)
 {
 	nav ul { padding: var(--kgap) var(--lgap) }
+}
+
+@media (prefers-color-scheme: dark)
+{
+	nav svg { color: var(--green-3) }
+	nav svg:hover { color: var(--green-2) }
+	nav a:hover { color: var(--green-3) }
 }
 
 /* Sections */
@@ -346,6 +381,16 @@ section dl:last-child { margin-bottom: 0 }
 
 section ul { list-style: none }
 
+@media (prefers-color-scheme: dark)
+{
+	h3 { color: var(--green-3) }
+
+	main p,
+	section p,
+	section li,
+	section dd { color: var(--green-4) }
+}
+
 /* Custom sections */
 
 .whitebg { background-color: var(--green-0) }
@@ -383,6 +428,22 @@ section ul { list-style: none }
 	color: var(--green-0);
 }
 
+@media (prefers-color-scheme: dark)
+{
+	.photobg {
+		background-image: linear-gradient(var(--green-0), var(--green-0)), url('milad-fakurian-UqP7U400AZs-unsplash.jpg');
+		background-blend-mode: soft-light;
+	}
+
+	.darkgreenbg { background-color: var(--green-1) }
+	.whitebg [role="button"] { background-color: rgba(var(--green-2-rgb), .125) }
+	
+	.whitebg [role="button"]:hover {
+		color: var(--green-4);
+		background-color: rgba(var(--green-2-rgb), .0625);
+	}
+}
+
 /* Hero */
 
 #hero {
@@ -398,6 +459,13 @@ section ul { list-style: none }
 @media screen and (min-width: 60rem)
 {
 	#hero { padding-bottom: calc(12 * var(--vgap)) }
+}
+
+@media (prefers-color-scheme: dark)
+{
+	#hero h2 { color: var(--green-0) }
+	#hero a { color: rgba(var(--green-3-rgb), .75) }
+	#hero a:hover { background-color: var(--green-1) }
 }
 
 /* Main */
@@ -509,6 +577,12 @@ main p+p { margin-top: 1em }
 	#lebensregeln li { padding: var(--kgap) var(--hgap) }
 }
 
+@media (prefers-color-scheme: dark)
+{
+	#lebensregeln h3 { color: var(--green-0) }
+	#lebensregeln li::before { border-bottom-color: var(--green-1) }
+}
+
 /* Preise */
 
 #preise h3,
@@ -556,9 +630,14 @@ main p+p { margin-top: 1em }
 	#preise dl:last-of-type { margin-bottom: var(--vgap) }
 }
 
-/* Eingeweiht */
+@media (prefers-color-scheme: dark)
+{
+	#preise dl { background-color: rgba(var(--green-0-rgb), .5) }
+}
 
-#eingeweiht ul {
+/* Einweihungen */
+
+#einweihungen ul {
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -568,7 +647,7 @@ main p+p { margin-top: 1em }
 	margin-top: var(--kgap);
 }
 
-#eingeweiht ul::before {
+#einweihungen ul::before {
 	position: absolute;
 	display: block;
 	margin: auto;
@@ -582,15 +661,15 @@ main p+p { margin-top: 1em }
 	background-color: var(--green-2);
 }
 
-#eingeweiht li {
+#einweihungen li {
 	display: block;
 	padding: var(--kgap) var(--lgap);
 	background-color: rgba(var(--green-0-rgb), .5);
 }
 
-#eingeweiht h5 { position: relative }
+#einweihungen h5 { position: relative }
 
-#eingeweiht h5::before {
+#einweihungen h5::before {
 	position: absolute;
 	display: block;
 	margin: auto;
@@ -604,31 +683,31 @@ main p+p { margin-top: 1em }
 	background-color: var(--green-2);
 }
 
-#eingeweiht h6,
-#eingeweiht p { margin-top: .5em }
+#einweihungen h6,
+#einweihungen p { margin-top: .5em }
 
-#eingeweiht h5 {
+#einweihungen h5 {
 	font-size: var(--capsize);
 	color: var(--green-4);
 }
 
-#eingeweiht h6 {
+#einweihungen h6 {
 	font-size: var(--textsize);
 	color: var(--green-3);
 }
 
-#eingeweiht p {
+#einweihungen p {
 	font-size: 1em;
 	color: var(--color-t);
 }
 
 @media screen and (min-width: 40rem)
 {
-	#eingeweiht ul { margin-left: var(--lgap) }
-	#eingeweiht ul::before { left: calc(0px - var(--lgap)) }
-	#eingeweiht h5::before { left: calc(0px - 2 * var(--lgap) - var(--gap) / 4) }
+	#einweihungen ul { margin-left: var(--lgap) }
+	#einweihungen ul::before { left: calc(0px - var(--lgap)) }
+	#einweihungen h5::before { left: calc(0px - 2 * var(--lgap) - var(--gap) / 4) }
 	
-	#eingeweiht h5::after {
+	#einweihungen h5::after {
 		position: absolute;
 		display: block;
 		margin: auto;
@@ -644,34 +723,34 @@ main p+p { margin-top: 1em }
 
 @media screen and (min-width: 60rem)
 {
-	#eingeweiht h3,
-	#eingeweiht h4 { text-align: center }
+	#einweihungen h3,
+	#einweihungen h4 { text-align: center }
 
-	#eingeweiht ul {
+	#einweihungen ul {
 		grid-template-columns: repeat(2, 1fr);
 		align-items: start;
 		gap: calc(3 * var(--vgap)) var(--lgap);
 		margin-left: 0;
 	}
 	
-	#eingeweiht ul::before {
+	#einweihungen ul::before {
 		left: 0;
 		right: 0;
 	}
 	
-	#eingeweiht h5::before,
-	#eingeweiht h5::after { display: none }
+	#einweihungen h5::before,
+	#einweihungen h5::after { display: none }
 
-	#eingeweiht li { position: relative }
-	#eingeweiht li:nth-of-type(odd) { grid-column: 1/2 }
-	#eingeweiht li:nth-of-type(even) { grid-column: 2/3 }
-	#eingeweiht li:nth-of-type(1) { grid-row: 1/2 }
-	#eingeweiht li:nth-of-type(2) { grid-row: 1/3 }
-	#eingeweiht li:nth-of-type(3) { grid-row: 2/5 }
-	#eingeweiht li:nth-of-type(4) { grid-row: 3/5 }
+	#einweihungen li { position: relative }
+	#einweihungen li:nth-of-type(odd) { grid-column: 1/2 }
+	#einweihungen li:nth-of-type(even) { grid-column: 2/3 }
+	#einweihungen li:nth-of-type(1) { grid-row: 1/2 }
+	#einweihungen li:nth-of-type(2) { grid-row: 1/3 }
+	#einweihungen li:nth-of-type(3) { grid-row: 2/5 }
+	#einweihungen li:nth-of-type(4) { grid-row: 3/5 }
 	
-	#eingeweiht li::before,
-	#eingeweiht li::after {
+	#einweihungen li::before,
+	#einweihungen li::after {
 		position: absolute;
 		display: block;
 		margin: auto;
@@ -681,34 +760,39 @@ main p+p { margin-top: 1em }
 		background-color: var(--green-2);
 	}
 
-	#eingeweiht li::before {
+	#einweihungen li::before {
 		width: calc(var(--lgap) / 2);
 		height: 1px;
 	}
 	
-	#eingeweiht li:nth-of-type(odd)::before { right: calc(0px - var(--lgap) / 2) }
-	#eingeweiht li:nth-of-type(even)::before { left: calc(0px - var(--lgap) / 2) }
+	#einweihungen li:nth-of-type(odd)::before { right: calc(0px - var(--lgap) / 2) }
+	#einweihungen li:nth-of-type(even)::before { left: calc(0px - var(--lgap) / 2) }
 
-	#eingeweiht li::after {
+	#einweihungen li::after {
 		width: calc(var(--gap) / 2);
 		height: calc(var(--gap) / 2);
 		border-radius: calc(var(--gap) / 4);
 	}
 	
-	#eingeweiht li:nth-of-type(odd)::after { right: calc(0px - var(--lgap) / 2 - var(--gap) / 4) }
-	#eingeweiht li:nth-of-type(even)::after { left: calc(0px - var(--lgap) / 2 - var(--gap) / 4) }
+	#einweihungen li:nth-of-type(odd)::after { right: calc(0px - var(--lgap) / 2 - var(--gap) / 4) }
+	#einweihungen li:nth-of-type(even)::after { left: calc(0px - var(--lgap) / 2 - var(--gap) / 4) }
 }
 
 @media screen and (min-width: 100rem)
 {
-	#eingeweiht li::after {
+	#einweihungen li::after {
 		width: var(--gap);
 		height: var(--gap);
 		border-radius: calc(var(--gap) / 2);
 	}
 	
-	#eingeweiht li:nth-of-type(odd)::after { right: calc(0px - var(--lgap) / 2 - var(--gap) / 2) }
-	#eingeweiht li:nth-of-type(even)::after { left: calc(0px - var(--lgap) / 2 - var(--gap) / 2) }
+	#einweihungen li:nth-of-type(odd)::after { right: calc(0px - var(--lgap) / 2 - var(--gap) / 2) }
+	#einweihungen li:nth-of-type(even)::after { left: calc(0px - var(--lgap) / 2 - var(--gap) / 2) }
+}
+
+@media (prefers-color-scheme: dark)
+{
+	#einweihungen p { color: var(--green-4) }
 }
 
 /* Kontakt */
@@ -790,7 +874,7 @@ main p+p { margin-top: 1em }
 
 .legal dt { color: var(--color-t) }
 
-.legal a { color: var(--accnt-1) }
+.legal a { color: var(--green-4) }
 
 @media screen and (min-width: 60rem)
 {
@@ -811,6 +895,16 @@ main p+p { margin-top: 1em }
 @media screen and (min-width: 100rem)
 {
 	.legal>* { max-width: 70rem }
+}
+
+@media (prefers-color-scheme: dark)
+{
+	.legal li>h5,
+	.legal ul li::marker,
+	.legal ol li::marker { color: var(--green-2) }
+
+	.legal ul li,
+	.legal ol ol li { color: var(--green-4) }
 }
 
 /* Footer */

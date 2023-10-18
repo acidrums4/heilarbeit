@@ -398,11 +398,12 @@ section ul { list-style: none }
 .lightgreenbg { background-color: var(--green-1) }
 
 .whitebg [role="button"] {
-	background-color: var(--green-2);
+	line-height: 1.5;
 	font-size: var(--textsize);
 	font-variant-caps: normal;
 	letter-spacing: 0;
 	color: var(--green-4);
+	background-color: var(--green-2);
 }
 
 .whitebg [role="button"]:hover {
@@ -410,12 +411,24 @@ section ul { list-style: none }
 	color: var(--green-0);
 }
 
-.photobg {
+.photobg::before {
+	position: absolute;
+	display: block;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	content: '';
+	z-index: -1;
 	background-image: url('milad-fakurian-UqP7U400AZs-unsplash.jpg');
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: cover;
 	background-attachment: fixed;
+	filter: blur(2px);
 }
 
 .photobg [role="button"] {
@@ -430,10 +443,7 @@ section ul { list-style: none }
 
 @media (prefers-color-scheme: dark)
 {
-	.photobg {
-		background-image: linear-gradient(var(--green-0), var(--green-0)), url('milad-fakurian-UqP7U400AZs-unsplash.jpg');
-		background-blend-mode: soft-light;
-	}
+	.photobg::before { filter: blur(2px) opacity(.75) }
 
 	.darkgreenbg { background-color: var(--green-1) }
 	.whitebg [role="button"] { background-color: rgba(var(--green-2-rgb), .125) }
@@ -534,6 +544,7 @@ main p+p { margin-top: 1em }
 
 /* Lebensregeln */
 
+#lebensregeln { position: relative }
 #lebensregeln h3 { text-align: center }
 
 #lebensregeln ol {
@@ -799,6 +810,18 @@ main p+p { margin-top: 1em }
 
 #kontakt { text-align: center }
 
+#kontakt img {
+	position: relative;
+	display: block;
+	margin: var(--lgap) auto;
+	width: calc(10 * var(--gap));
+	height: calc(10 * var(--gap));
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: 50% 50%;
+	filter: contrast(1.25);
+}
+
 @media screen and (min-width: 50rem)
 {
 	#kontakt {
@@ -815,6 +838,24 @@ main p+p { margin-top: 1em }
 		padding-right: 0;
 		width: calc(50% - var(--lgap) / 2);
 	}
+
+	#kontakt img {
+		width: calc(12 * var(--gap));
+		height: calc(12 * var(--gap));
+	}
+}
+
+@media screen and (min-width: 100rem)
+{
+	#kontakt img {
+		width: calc(16 * var(--gap));
+		height: calc(16 * var(--gap));
+	}
+}
+
+@media (prefers-color-scheme: dark)
+{
+	#kontakt img { opacity: .75 }
 }
 
 /* Legal */
